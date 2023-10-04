@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="onboarding_rubric_line_view_form_options" model="ir.ui.view">
+        <field name="name">Onboarding: Rubric Lines Form - Options</field>
+        <field name="model">onboarding.rubric.line</field>
+        <field name="inherit_id" ref="onboarding_rubric_line_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='configuration']" position="inside">
+                <group name="options" attrs="{'invisible':[('criteria_type','!=','options')]}">
+                    <group string="Individual Criteria" colspan="4">
+                        <field name="options_sub_criteria_line_ids" nolabel="1" colspan="2" context="{'default_max_score': max_score}">
+                            <tree>
+                                <field name="name"/>
+                                <field name="criteria_type" />
+                            </tree>
+                        </field>
+                    </group>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="onboarding_demo_action" model="ir.actions.act_window">
+        <field name="name">Demos</field>
+        <field name="res_model">onboarding.demo</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                You don't have any demos yet! Create a new one to get started.
+            </p>
+        </field>
+    </record>
+
+    <record id="onboarding_database_action" model="ir.actions.act_window">
+        <field name="name">Databases</field>
+        <field name="res_model">onboarding.database</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                You don't have any databases yet! Create a new one to get started.
+            </p>
+        </field>
+    </record>
+
+    <record id="onboarding_rubric_action" model="ir.actions.act_window">
+        <field name="name">Rubrics</field>
+        <field name="res_model">onboarding.rubric</field>
+        <field name="view_mode">tree,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                You don't have any demo rubrics yet! Create a new one to get started.
+            </p>
+        </field>
+    </record>
+
+    <record id="onboarding_rubric_line_action" model="ir.actions.act_window" >
+        <field name="name">Criteria</field>
+        <field name="res_model">onboarding.rubric.line</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_id" ref="onboarding_rubric_line_view_form"/>
+    </record>
+
+    <menuitem id="onboarding_menu" name="Onboarding Demos" sequence="10" web_icon="onboarding_demo_grader,static/description/icon.png">
+        <menuitem id="onboarding_demos_top_menu" name="Demos" sequence="10">
+            <menuitem id="onboarding_demo_menu" name="Demos" action="onboarding_demo_action" sequence="10"/>
+            <menuitem id="onboarding_database_menu" name="Databases" action="onboarding_database_action" sequence="10"/>
+        </menuitem>
+        <menuitem id="onboarding_rubric_menu" name="Rubrics" action="onboarding_rubric_action" sequence="12" groups="onboarding_demo_grader.onboarding_demo_grader"/>
+    </menuitem>
+
+</odoo>

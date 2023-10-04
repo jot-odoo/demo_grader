@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="onboarding_rubric_line_view_form_custom" model="ir.ui.view">
+        <field name="name">Onboarding: Rubric Lines Form - Custom</field>
+        <field name="model">onboarding.rubric.line</field>
+        <field name="inherit_id" ref="onboarding_rubric_line_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='configuration']" position="inside">
+                <group name="criteria_custom" attrs="{'invisible':[('criteria_type','!=','custom')]}">
+                    <field name="custom_query" nolabel="1" colspan="2" widget="ace" options="{'mode': 'python'}"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

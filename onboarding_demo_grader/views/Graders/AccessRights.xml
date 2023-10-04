@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="onboarding_rubric_line_view_form_access_rights" model="ir.ui.view">
+        <field name="name">Onboarding: Rubric Lines Form - Access Rights</field>
+        <field name="model">onboarding.rubric.line</field>
+        <field name="inherit_id" ref="onboarding_rubric_line_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='configuration']" position="inside">
+                <group name="criteria_access_rights" attrs="{'invisible':[('criteria_type','!=','access_rights')]}">
+                    <field name="access_rights_user_domain"/>
+                    <field name="access_rights_include_groups" widget="many2many_tags"/>
+                    <field name="access_rights_exclude_groups" widget="many2many_tags"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

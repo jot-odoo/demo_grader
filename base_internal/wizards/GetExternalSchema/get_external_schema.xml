@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="external_get_schema_view_form" model="ir.ui.view">
+        <field name="name">Wizard: Get External Schema</field>
+        <field name="model">external.get.schema</field>
+        <field name="arch" type="xml">
+            <form string="Get External Schema">
+                <sheet>
+                    <group>
+                        <field name="url"/>
+                        <field name="database_name"/>
+                        <footer>
+                            <button name="get_schema" string="Fetch" type="object" class="oe_highlight"/>
+                            <button string="Cancel" class="oe_link" special="cancel"/>
+                        </footer>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+</odoo>

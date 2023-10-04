@@ -1,0 +1,13 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_onboarding_demo_user,onboarding_demo_grader.onboarding.demo,model_onboarding_demo,base.group_user,1,1,1,0
+access_onboarding_demo_line_user,onboarding_demo_grader.onboarding.demo.line,model_onboarding_demo_line,base.group_user,1,0,0,0
+access_onboarding_database_user,onboarding_demo_grader.onboarding.database,model_onboarding_database,base.group_user,1,1,1,1
+access_onboarding_rubric_user,onboarding_demo_grader.onboarding.rubric,model_onboarding_rubric,base.group_user,1,0,0,0
+access_onboarding_rubric_line_user,onboarding_demo_grader.onboarding.rubric.line,model_onboarding_rubric_line,base.group_user,1,0,0,0
+
+access_onboarding_demo_grader,onboarding_demo_grader.onboarding.demo,model_onboarding_demo,onboarding_demo_grader.onboarding_demo_grader,1,1,1,1
+access_onboarding_demo_line_grader,onboarding_demo_grader.onboarding.demo.line,model_onboarding_demo_line,onboarding_demo_grader.onboarding_demo_grader,1,1,1,1
+
+access_onboarding_rubric_admin,onboarding_demo_grader.onboarding.rubric,model_onboarding_rubric,onboarding_demo_grader.onboarding_demo_admin,1,1,1,1
+access_onboarding_rubric_line_admin,onboarding_demo_grader.onboarding.rubric.line,model_onboarding_rubric_line,onboarding_demo_grader.onboarding_demo_admin,1,1,1,1
