@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="onboarding_demo_view_form" model="ir.ui.view">
+        <field name="name">Onboarding: Demo Form</field>
+        <field name="model">onboarding.demo</field>
+        <field name="arch" type="xml">
+            <form string="Demo">
+                <header>
+                    <button name="action_ready" string="Confirm" type="object" class="oe_highlight"
+                        attrs="{'invisible':[('state','!=','draft')]}"/>
+                    <button name="action_grade" string="Grade" type="object" class="oe_highlight" groups="onboarding_demo_grader.onboarding_demo_grader" attrs="{'invisible':[('state','!=','ready')]}"/>
+                    <button name="action_validate" string="Validate" type="object" class="oe_highlight" groups="onboarding_demo_grader.onboarding_demo_grader" attrs="{'invisible':[('state','!=','graded')]}"/>
+                    <button name="action_unvalidate" string="Unvalidate" type="object" class="oe_highlight" groups="onboarding_demo_grader.onboarding_demo_admin" attrs="{'invisible':[('state','!=','done')]}"/>
+                    <field name="state" widget="statusbar"/>
+                </header>
+                <sheet>
+                    <group>
+                        <group string="Information">
+                            <!-- Regular users shouldn't be able to assign a demo to someone else -->
+                            <field name="user_id" widget="many2one_avatar_user" groups="onboarding_demo_grader.onboarding_demo_grader"/>
+                            <field name="user_id" widget="many2one_avatar_user" groups="!onboarding_demo_grader.onboarding_demo_grader" readonly="1"/>
+                            <field name="grader_ids" widget="many2many_avatar_user" />
+                            <field name="rubric_id"/>
+                            <field name="date" attrs="{'invisible':[('state','not in',['graded','done'])]}"/>
+                        </group>
+                        <group string="Database">
+                            <field name="database_id"/>
+                            <field name="name" />
+                            <field name="email" />
+                            <field name="password" password="1"/>
+                            <field name="version_id" invisible="1"/>
+                        </group>
+                        <!-- <group string="Scoring" attrs="{'invisible':[('score','=',0)]}">
+                            <label for="score" />
+                            <div >
+                                <field name="score" class="oe_inline" groups="!onboarding_demo_grader.onboarding_demo_grader"/>
+                                <field name="score" class="oe_inline" readonly="0" groups="onboarding_demo_grader.onboarding_demo_grader"/>
+                                <span class="o_form_label oe_inline"> / </span>
+                                <field name="max_score" class="oe_inline" />
+                            </div>
+                        </group> -->
+                    </group>
+                    <notebook>
+                        <page string="Results" attrs="{'invisible':[('state','not in',['graded','done'])]}">
+                            <field name="line_ids" widget="section_and_note_one2many" />
+                        </page>
+                        <page string="Business Use Case">
+                            <field name="description" />
+                        </page>
+                    </notebook>
+
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers"/>
+                    <field name="activity_ids" />
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="onboarding_demo_view_tree" model="ir.ui.view">
+        <field name="name">Onboarding: Demos Tree</field>
+        <field name="model">onboarding.demo</field>
+        <field name="arch" type="xml">
+            <tree string="Demos">
+                <field name="user_id"/>
+                <field name="rubric_id"/>
+                <field name="database_id"/>
+                <field name="score" attrs="{'invisible':[('state','not in',['graded','done'])]}"/>
+                <field name="state" widget="badge" 
+                    decoration-muted="state == 'draft'" 
+                    decoration-info="state == 'ready'"  
+                    decoration-success="state in ['graded', 'done']"
+                />
+            </tree>
+        </field>
+    </record>
+
+    <record id="onboarding_demo_line_view_tree" model="ir.ui.view">
+        <field name="name">Onboarding: Demo Lines Tree</field>
+        <field name="model">onboarding.demo.line</field>
+        <field name="arch" type="xml">
+            <tree string="Demo Lines" editable="bottom">
+                <control>
+                    <create name="add_line_control" string="Add a line"/>
+                    <create name="add_section_control" string="Add a section" context="{'default_display_type': 'line_section'}"/>
+                    <create name="add_note" string="Add a Note" context="{'default_display_type': 'line_note'}"/>
+                </control>
+                <field name="name" />
+                <field name="notes" optional="show"/>
+                <field name="score" sum="Total Score"/>
+                <field name="max_score" optional="hide" sum="Max Score"/>
+                <field name="display_type" invisible="1" />
+                <field name="state" invisible="1" />
+                <field name="criteria_type" invisible="1" />
+                <button name="grade" class="float-end btn-secondary" type="object"
+                    attrs="{'invisible':['|',('state','!=','graded'), ('criteria_type','=','manual')]}"
+                    groups="onboarding_demo_grader.onboarding_demo_admin" 
+                    string="Regrade"/>
+            </tree>
+        </field>
+    </record>
+
+</odoo>

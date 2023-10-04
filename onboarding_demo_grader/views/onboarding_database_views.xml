@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="onboarding_database_view_form" model="ir.ui.view">
+        <field name="name">Onboarding: Database Form</field>
+        <field name="model">onboarding.database</field>
+        <field name="arch" type="xml">
+            <form string="Database">
+                <sheet>
+                    <group>
+                        <field name="user_id"/>
+                        <field name="url"/>
+                        <field name="name"/>
+                        <field name="email"/>
+                        <field name="password" password="1"/>
+                        <field name="version_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="onboarding_database_view_tree" model="ir.ui.view">
+        <field name="name">Onboarding: Database Tree</field>
+        <field name="model">onboarding.database</field>
+        <field name="arch" type="xml">
+            <tree string="Databases" editable="top">
+                <field name="user_id"/>
+                <field name="name"/>
+                <field name="url"/>
+                <field name="email"/>
+                <field name="password" password="1"/>
+                <field name="version_id"/>
+            </tree>
+        </field>
+    </record>
+
+
+</odoo>

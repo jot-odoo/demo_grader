@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="onboarding_rubric_line_view_form_count" model="ir.ui.view">
+        <field name="name">Onboarding: Rubric Lines Form - Count</field>
+        <field name="model">onboarding.rubric.line</field>
+        <field name="inherit_id" ref="onboarding_rubric_line_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='configuration']" position="inside">
+                <group name="criteria_count" attrs="{'invisible':[('criteria_type','!=','count')]}">
+                    <field name="count_model" domain="[('version_ids','in',version_ids)]"/>
+                    <field name="count_domain"/>
+                    <field name="count_comparator"/>
+                    <field name="count_value"/>
+                    <field name="count_include_archived"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

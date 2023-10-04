@@ -1,0 +1,8 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+access_external_ir_model_user,models.external.ir.model,model_external_ir_model,base.group_user,1,1,1,1
+access_external_ir_model_fields_user,models.external.ir.model.fields,model_external_ir_model_fields,base.group_user,1,1,1,1
+access_external_ir_model_version_user,models.external.ir.model.version,model_external_ir_model_version,base.group_user,1,1,1,1
+access_external_res_groups_user,models.external.res.groups,model_external_res_groups,base.group_user,1,1,1,1
+
+access_external_get_schema_user,wizards.external.get.schema,model_external_get_schema,base.group_user,1,1,1,1

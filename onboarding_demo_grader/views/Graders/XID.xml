@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="onboarding_rubric_line_view_form_xid" model="ir.ui.view">
+        <field name="name">Onboarding: Rubric Lines Form - XID</field>
+        <field name="model">onboarding.rubric.line</field>
+        <field name="inherit_id" ref="onboarding_rubric_line_view_form"/>
+        <field name="arch" type="xml">
+
+            <xpath expr="//page[@name='configuration']" position="inside">
+                <group name="criteria_xid" attrs="{'invisible':[('criteria_type','!=','xid')]}">
+                    <field name="xid_model" domain="[('version_ids','in',version_ids)]"/>
+                    <field name="xid_external_id"/>
+                    <field name="xid_domain"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>

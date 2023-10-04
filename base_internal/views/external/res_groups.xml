@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+    <record id="external_res_groups_view_tree" model="ir.ui.view">
+        <field name="name">external.res.groups.view.tree</field>
+        <field name="model">external.res.groups</field>
+        <field name="arch" type="xml">
+            <tree string="External Access Groups" editable="top" js_class="get_external_schema_tree">
+                <field name="name"/>
+                <field name="external_id"/>
+                <field name="version_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+    </record>
+    
+</odoo>

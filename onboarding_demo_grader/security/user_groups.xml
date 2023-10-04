@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="onboarding_demo_grader" model="res.groups">
+        <field name="name">Grader</field>
+        <field name="category_id" ref="base.module_category_internal_onboarding"/>
+    </record>
+    
+    <record id="onboarding_demo_admin" model="res.groups">
+        <field name="name">Administrator</field>
+        <field name="category_id" ref="base.module_category_internal_onboarding"/>
+        <field name="implied_ids" eval="[(4, ref('onboarding_demo_grader.onboarding_demo_grader'))]"/>
+    </record>
+
+</odoo>
